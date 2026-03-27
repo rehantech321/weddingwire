@@ -1,0 +1,233 @@
+:root {
+  --bg: #fffaf6;
+  --bg-soft: #f7efe7;
+  --surface: rgba(255, 250, 245, 0.9);
+  --surface-strong: #ffffff;
+  --text: #2f1f1c;
+  --muted: #6e5a56;
+  --accent: #b66d5d;
+  --accent-deep: #8d4d3f;
+  --line: rgba(114, 76, 67, 0.14);
+  --shadow: 0 20px 50px rgba(93, 52, 44, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(214, 170, 156, 0.22), transparent 28%),
+    radial-gradient(circle at right center, rgba(230, 214, 189, 0.35), transparent 25%),
+    linear-gradient(180deg, #fff8f3 0%, #fffaf6 45%, #f8efe8 100%);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--accent-deep);
+}
+
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: grid;
+  place-items: center;
+  padding: 3rem 1.5rem;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(55, 24, 20, 0.7), rgba(119, 70, 59, 0.45)),
+    linear-gradient(180deg, #cba08f 0%, #a8695b 100%);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18), transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(255, 240, 232, 0.16), transparent 18%),
+    radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.1), transparent 22%);
+}
+
+.hero__content {
+  position: relative;
+  max-width: 860px;
+  text-align: center;
+  color: #fff9f5;
+  animation: rise 0.9s ease-out both;
+}
+
+.eyebrow {
+  margin: 0 0 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  opacity: 0.84;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", serif;
+  line-height: 1.05;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 5.8rem);
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.65rem;
+}
+
+.hero__intro {
+  max-width: 700px;
+  margin: 0 auto 1.75rem;
+  font-size: 1.08rem;
+}
+
+.hero__button {
+  display: inline-block;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  background: #fff4ee;
+  color: var(--accent-deep);
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+
+main {
+  width: min(1120px, calc(100% - 2rem));
+  margin: -4rem auto 4rem;
+  position: relative;
+}
+
+.section {
+  background: var(--surface);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.section__heading {
+  max-width: 720px;
+  margin-bottom: 1.5rem;
+}
+
+.article-grid,
+.content-columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.article-card,
+.highlight-card,
+.tip-card {
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.5rem;
+}
+
+.highlight-card {
+  background: linear-gradient(180deg, #fff8f3 0%, #f6e8df 100%);
+}
+
+.tips-toolbar {
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tip-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tip-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(93, 52, 44, 0.12);
+}
+
+.tip-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.tip-card__number {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.tip-card__category {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--bg-soft);
+}
+
+.final-note {
+  font-size: 1.05rem;
+  max-width: 820px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 860px) {
+  .article-grid,
+  .content-columns,
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+
+  main {
+    width: min(100% - 1rem, 1120px);
+    margin-top: -2.5rem;
+  }
+
+  .section {
+    padding: 1.4rem;
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+}
